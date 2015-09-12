@@ -1,4 +1,15 @@
 Rails.application.configure do
+
+  POSTMARK_API_KEY =  ENV["POSTMARK_KEY"]
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.postmarkapp.com",
+    :port                 => 25,
+    :domain               => 'heroku.com',
+    :user_name            => POSTMARK_API_KEY,
+    :password             => POSTMARK_API_KEY,
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
