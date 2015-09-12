@@ -1,1 +1,5 @@
-<%= @results %>
+<% @data.each do |video| %>
+  <%= video[:title] %>
+  <%= video[:description] %>
+  <iframe width="400" height="315" src="https://www.youtube.com/embed/<%= video[:id] %>" frameborder="0" allowfullscreen></iframe>
+<% end %>
