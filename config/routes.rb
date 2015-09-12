@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/videos' => 'cats#show', as: :video
 
+  post '/email' => 'cats#create', as: :email
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,3 +1,5 @@
+
+
 class CatsController < ApplicationController
 
 
@@ -16,6 +18,22 @@ class CatsController < ApplicationController
   # videoEmbeddable: true
 
   def index
+    @email = Person.new
+  end
+
+  def create
+    if Person.create(email_params)
+      client = Postmark::ApiClient.new(ENV["POSTMARK_KEY"])
+      client.deliver(from: 'welovecats@cat-videos.herokuapp.com',
+               to: 'katrops@gmail.com',
+               subject: 'Re: Come on, Sheldon. It will be fun.',
+               text_body: 'That\'s what you said about the Green Lantern ' \
+                          'movie. You were 114 minutes of wrong.')
+      redirect_to :email_sent
+    end
+  end
+
+  def email_sent
   end
 
   def show
@@ -36,6 +54,10 @@ class CatsController < ApplicationController
       }
     end
 
+  end
+
+  def email_params
+    params.require(:person).permit(:email)
   end
 
 end

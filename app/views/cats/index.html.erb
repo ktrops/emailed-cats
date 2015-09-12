@@ -1,1 +1,8 @@
 <%= link_to "Show me the cat videos!", video_path %>
+
+<%= form_for @email, url: email_path do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.submit %>
+<% end %>
