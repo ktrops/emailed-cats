@@ -5,7 +5,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.postmarkapp.com",
     :port                 => 25,
-    :domain               => 'heroku.com',
+    :domain               => 'welovecatvideos.com',
     :user_name            => POSTMARK_API_KEY,
     :password             => POSTMARK_API_KEY,
     :authentication       => 'plain',

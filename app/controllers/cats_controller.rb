@@ -24,7 +24,7 @@ class CatsController < ApplicationController
   def create
     if Person.create(email_params)
       client = Postmark::ApiClient.new(ENV["POSTMARK_KEY"])
-      client.deliver(from: 'welovecats@cat-videos.herokuapp.com',
+      client.deliver(from: 'cats@welovecatvideos.com',
                to: 'katrops@gmail.com',
                subject: 'Re: Come on, Sheldon. It will be fun.',
                text_body: 'That\'s what you said about the Green Lantern ' \
